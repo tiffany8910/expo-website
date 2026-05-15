@@ -125,95 +125,210 @@
             display: flex;
             justify-content: center;
         }
-
-        /* 英雄区 + 展会倒计时 */
+        /* ========= Hero 区域轮播图样式 ========= */
         .hero {
-            background: linear-gradient(105deg, #fef9f2 0%, #f8f2ea 100%);
-            padding: 70px 0 80px;
+            padding: 0;
+            background: #1f2a3e;
+            position: relative;
         }
-        .hero-grid {
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .carousel-slides {
             display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: space-between;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .slide-bg {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 650px;
+            display: flex;
             align-items: center;
+            position: relative;
         }
-        .hero-content {
-            flex: 1;
-            min-width: 260px;
+        
+        .slide-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(105deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 100%);
+            z-index: 1;
         }
-        .hero-badge {
+        
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 600px;
+            padding: 80px 40px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .slide-content .hero-badge {
             background: var(--primary-accent);
             color: white;
             display: inline-block;
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 40px;
             font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 0.5px;
             margin-bottom: 24px;
         }
-        .hero-content h1 {
-            font-size: 3rem;
+        
+        .slide-content h1 {
+            font-size: 3.2rem;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 20px;
-            color: #1a2634;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
-        .hero-content p {
+        
+        .slide-content p {
             font-size: 1.2rem;
-            color: var(--text-muted);
             margin-bottom: 30px;
-            max-width: 550px;
+            opacity: 0.95;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.2);
         }
+        
         .countdown-box {
-            background: white;
-            padding: 20px 30px;
-            border-radius: 28px;
-            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 16px 28px;
             display: inline-flex;
             flex-wrap: wrap;
             gap: 24px;
+            border: 1px solid rgba(255,255,255,0.3);
             margin-top: 16px;
         }
+        
         .countdown-item {
             text-align: center;
             min-width: 70px;
         }
+        
         .countdown-number {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
-            background: var(--primary-dark);
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
             color: white;
-            padding: 8px 12px;
+            padding: 6px 12px;
             border-radius: 20px;
             display: inline-block;
             min-width: 70px;
-            font-feature-settings: "tnum";
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
+        
         .countdown-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            color: #5b6e8c;
             letter-spacing: 1px;
+            color: #f0e6dd;
         }
-        .hero-visual {
-            flex: 1;
-            text-align: center;
-            background: #e9dfd3;
-            border-radius: 48px;
-            padding: 20px;
-            min-height: 280px;
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(4px);
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 60px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            transition: 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: radial-gradient(circle at 20% 40%, rgba(180,124,72,0.05) 2%, transparent 2.5%);
-            background-size: 28px 28px;
         }
-        .hero-visual svg {
-            max-width: 100%;
-            height: auto;
+        
+        .carousel-btn:hover {
+            background: var(--primary-accent);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        .btn-prev {
+            left: 24px;
+        }
+        
+        .btn-next {
+            right: 24px;
+        }
+        
+        .carousel-dots {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 10;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .dot.active {
+            width: 28px;
+            background: var(--primary-accent);
+            border-radius: 20px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 780px) {
+            .slide-content h1 {
+                font-size: 2rem;
+            }
+            .slide-content {
+                padding: 60px 24px;
+            }
+            .countdown-box {
+                gap: 12px;
+                padding: 12px 20px;
+            }
+            .carousel-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
         }
         /* 虚拟图形代表服装设计 */
         .fashion-svg {
