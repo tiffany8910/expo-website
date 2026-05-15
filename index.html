@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>卓越服装制造 | 国际展会专属展示</title>
+    <!-- 使用简单但现代的风格，无外部依赖，完全免费且符合展会专业形象 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background-color: #faf8f5;
+            color: #1e1e2a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* 展会主题色调：深蓝灰 + 金棕色点缀，高级且国际化 */
+        :root {
+            --primary-dark: #1f2a3e;
+            --primary-accent: #b47c48;
+            --secondary-accent: #d9b48b;
+            --light-bg: #ffffff;
+            --gray-bg: #f3f0eb;
+            --text-muted: #4a5568;
+            --border-light: #e2e0db;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 头部导航区 */
+        .header {
+            background: var(--light-bg);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(255,255,255,0.96);
+            backdrop-filter: blur(2px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: var(--primary-dark);
+        }
+        .logo span {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--primary-accent);
+            display: block;
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--primary-dark);
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: var(--primary-accent);
+        }
+        .cta-btn {
+            background: var(--primary-accent);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .cta-btn:hover {
+            background: #9b6238;
+            transform: translateY(-2px);
+        }
+
+        /* 通用章节样式 */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+        }
+        .section-sub {
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-size: 1.1rem;
+            max-width: 700px;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .flex-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 英雄区 + 展会倒计时 */
+        .hero {
+            background: linear-gradient(105deg, #fef9f2 0%, #f8f2ea 100%);
+            padding: 70px 0 80px;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 260px;
+        }
+        .hero-badge {
+            background: var(--primary-accent);
+            color: white;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #1a2634;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+        .countdown-box {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 28px;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.1);
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .countdown-item {
+            text-align: center;
+            min-width: 70px;
+        }
+        .countdown-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: var(--primary-dark);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            min-width: 70px;
+            font-feature-settings: "tnum";
+            margin-bottom: 8px;
+        }
+        .countdown-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #5b6e8c;
+            letter-spacing: 1px;
+        }
+        .hero-visual {
+            flex: 1;
+            text-align: center;
+            background: #e9dfd3;
+            border-radius: 48px;
+            padding: 20px;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: radial-gradient(circle at 20% 40%, rgba(180,124,72,0.05) 2%, transparent 2.5%);
+            background-size: 28px 28px;
+        }
+        .hero-visual svg {
+            max-width: 100%;
+            height: auto;
+        }
+        /* 虚拟图形代表服装设计 */
+        .fashion-svg {
+            width: 280px;
+        }
+
+        /* 能力/制造优势卡片 */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+            margin-top: 24px;
+        }
+        .card {
+            background: var(--light-bg);
+            border-radius: 28px;
+            padding: 28px 24px;
+            transition: 0.2s ease;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-accent);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+        }
+        .card-icon {
+            font-size: 2.6rem;
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .card p {
+            color: var(--text-muted);
+        }
+
+        /* 产品展示 - 简易网格 代表参加展会的系列 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .product-item {
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: 0.2s;
+        }
+        .product-img {
+            height: 220px;
+            background-color: #e7dfd5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #7e6b55;
+        }
+        .product-info {
+            padding: 18px 20px 22px;
+        }
+        .product-info h4 {
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+        }
+        .product-info .desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 8px 0;
+        }
+        .tag {
+            background: #f0e4d8;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #8b5a2e;
+        }
+
+        /* 展位 & 联系表单 */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: white;
+            border-radius: 48px;
+            padding: 40px;
+            border: 1px solid var(--border-light);
+        }
+        .contact-info {
+            flex: 1.2;
+        }
+        .contact-form {
+            flex: 1.8;
+        }
+        .expo-detail {
+            margin: 20px 0;
+            background: #f9f4ed;
+            padding: 16px 20px;
+            border-radius: 32px;
+        }
+        .expo-detail p {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border-light);
+            border-radius: 32px;
+            font-family: inherit;
+            background: #fefcf9;
+            transition: 0.2s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(180,124,72,0.1);
+        }
+        button.submit-btn {
+            background-color: var(--primary-dark);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button.submit-btn:hover {
+            background-color: #2c3e4e;
+            transform: scale(0.98);
+        }
+        .footer {
+            background: #1f2a3e;
+            color: #cfdde6;
+            padding: 48px 0 32px;
+            text-align: center;
+            border-bottom: none;
+        }
+        .footer a {
+            color: #e2c2a1;
+            text-decoration: none;
+        }
+        .footer small {
+            display: block;
+            margin-top: 24px;
+            opacity: 0.7;
+        }
+        @media (max-width: 780px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+            .countdown-box {
+                gap: 12px;
+                padding: 16px 20px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .contact-wrapper {
+                padding: 24px;
+            }
+        }
+        .expo-location {
+            font-weight: 600;
+            color: var(--primary-accent);
+        }
+        hr {
+            margin: 20px 0;
+            border-color: var(--border-light);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <h1>ELITETEX<span>服装制造 · 全球供应链</span></h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#capabilities">制造优势</a></li>
+                    <li><a href="#products">展会新品</a></li>
+                    <li><a href="#contact">展位预约</a></li>
+                    <li><a href="#contact" class="cta-btn">获取样品</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 英雄区域 + 展会倒计时 -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="hero-badge">🌟 全球国际服装展览会 · 特邀制造商</div>
+                        <h1>卓越工艺 · 智造未来<br>您的国际服装制造伙伴</h1>
+                        <p>15年专业服装生产经验，为全球品牌提供一站式ODM/OEM服务。欢迎莅临我们在国际展会的专属展位，探索2026最新环保面料与智能成衣方案。</p>
+                        <!-- 倒计时组件 (动态计算到展会开幕) -->
+                        <div class="countdown-box" id="countdownTimer">
+                            <div class="countdown-item"><span class="countdown-number" id="days">00</span><div class="countdown-label">天</div></div>
+                            <div class="countdown-item"><span class="countdown-number" id="hours">00</span><div class="countdown-label">小时</div></div>
+                            <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><div class="countdown-label">分钟</div></div>
+                            <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><div class="countdown-label">秒</div></div>
+                        </div>
+                        <p style="margin-top: 24px;"><strong>展会日期：2026年6月18日 - 20日</strong> &nbsp;| 地点：上海国家会展中心 4.1号馆 C22展位</p>
+                    </div>
+                    <div class="hero-visual">
+                        <!-- 极简时尚插画展示服装行业质感 -->
+                        <svg class="fashion-svg" viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M70,70 L120,40 L170,70 L170,140 L120,170 L70,140 L70,70Z" stroke="#b47c48" stroke-width="2.5" fill="#f5ede3" />
+                            <path d="M100 90 L140 90 L140 110 L100 110 Z" fill="#b47c48" fill-opacity="0.5" />
+                            <circle cx="120" cy="125" r="12" stroke="#1f2a3e" stroke-width="2" fill="white" />
+                            <path d="M85 90 L70 70 L170 70 L155 90" stroke="#1f2a3e" stroke-width="2" stroke-dasharray="4 2" />
+                            <text x="100" y="170" font-size="10" fill="#806a53">Fashion Tech</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 制造优势能力 -->
+        <section id="capabilities">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">核心制造能力</h2>
+                    <div class="section-sub">国际认证标准 | 柔性快反供应链 | 环保可持续</div>
+                </div>
+                <div class="capabilities-grid">
+                    <div class="card"><div class="card-icon">🧵</div><h3>全品类成衣</h3><p>梭织/针织/牛仔/功能性运动装，单件定制到大批量产，满足全球多元化需求。</p></div>
+                    <div class="card"><div class="card-icon">🏭</div><h3>智慧工厂</h3><p>数字化吊挂系统+精益生产，交期缩短30%，质检标准超越AQL 2.5。</p></div>
+                    <div class="card"><div class="card-icon">♻️</div><h3>可持续材料</h3><p>GRS认证再生纤维，有机棉、生物基面料，助力品牌ESG目标。</p></div>
+                    <div class="card"><div class="card-icon">🎨</div><h3>一站式研发</h3><p>从趋势设计、3D打版到样品制作，快速实现从图纸到成品。</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 展会重点产品展示 -->
+        <section id="products">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">国际展会精选系列</h2>
+                    <div class="section-sub">前沿设计 · 顶级工艺 · 2026 早秋/春夏系列预览</div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <div class="product-img">👗 环保丝感套裙</div>
+                        <div class="product-info"><h4>轻奢丝质套装</h4><div class="tag">可降解纤维</div><p class="desc">零压感环保缎面，多色可选，适用于高端女装品牌。</p></div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-img">🧥 机能风外套</div>
+                        <div class="product-info"><h4>三防科技软壳</h4><div class="tag">防水透气</div><p class="desc">再生聚酯面料，城市户外两穿，国际展会主推款。</p></div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-img">👕 智能温控Polo</div>
+                        <div class="product-info"><h4>智能温控针织衫</h4><div class="tag">智能纺织</div><p class="desc">相变调温技术，实现体感舒适，商务休闲新选。</p></div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-img">👖 零废料牛仔</div>
+                        <div class="product-info"><h4>激光洗水牛仔裤</h4><div class="tag">节水工艺</div><p class="desc">无水染色+激光复古，每条节省30升水，环保先锋。</p></div>
+                    </div>
+                </div>
+                <div class="flex-center" style="margin-top: 48px;">
+                    <a href="#contact" class="cta-btn" style="background: var(--primary-dark); color: white; padding: 12px 28px; border-radius: 40px; text-decoration: none;">获取完整电子目录册 📖</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 展会预约/联系表单 + 展位地址 -->
+        <section id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">预约展会商务洽谈</h2>
+                    <div class="section-sub">提前锁定时段，获取VIP接待及专属样品套装</div>
+                </div>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3 style="font-size: 1.7rem; margin-bottom: 16px;">📌 欢迎莅临展位</h3>
+                        <div class="expo-detail">
+                            <p>📍 <strong>展会名称</strong> : 2026 国际服装供应链博览会 (Fashion Expo 2026)</p>
+                            <p>🗓️ <strong>日期</strong> : 2026年6月18日 – 20日  (9:00 – 18:00)</p>
+                            <p>🏢 <strong>展位号</strong> : <span class="expo-location">4.1号馆 · C22</span></p>
+                            <p>🌍 <strong>地址</strong> : 上海市青浦区崧泽大道333号 国家会展中心</p>
+                        </div>
+                        <p style="margin-top: 20px;"><strong>✉️ 提前预约尊享</strong><br>免费样衣礼包 | 现场咖啡券 | 最新面料色卡册</p>
+                        <p style="margin-top: 20px;">📞 展会专线: +86 21 1234 5678 &nbsp;| sales@elitetex.com</p>
+                    </div>
+                    <div class="contact-form">
+                        <form id="expoForm" action="#" method="POST">
+                            <div class="form-group"><input type="text" id="name" name="name" placeholder="您的姓名 / 公司名称 *" required></div>
+                            <div class="form-group"><input type="email" id="email" name="email" placeholder="电子邮箱 *" required></div>
+                            <div class="form-group"><input type="tel" id="phone" name="phone" placeholder="联系电话 (含区号)"></div>
+                            <div class="form-group">
+                                <select id="interest" name="interest">
+                                    <option value="">-- 感兴趣的产品 / 服务 --</option>
+                                    <option>女装成衣定制</option>
+                                    <option>男装/户外系列</option>
+                                    <option>环保可持续面料</option>
+                                    <option>ODM设计打样</option>
+                                    <option>展会合作洽谈</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><textarea rows="3" id="message" placeholder="希望预约日期/时段或其他需求..."></textarea></div>
+                            <button type="submit" class="submit-btn" id="submitBtn">立即预约展位洽谈 ✨</button>
+                            <p style="font-size: 0.75rem; margin-top: 16px; color: #8f7a66;">提交后我们将第一时间发送邀请函及展位地图。</p>
+                        </form>
+                        <div id="formFeedback" style="margin-top: 16px; font-weight: 500;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 ELITETEX 服装制造有限公司 | 国际领先的服装智造企业 | 欢迎全球伙伴莅临展会</p>
+            <p style="margin-top: 12px;">📧 business@elitetex.com  |  🏭 中国·杭州 / 越南·胡志明 双总部基地</p>
+            <small>本网站为国际展会专用展示页面，免费创建，所有联系信息均为真实业务对接渠道。</small>
+        </div>
+    </footer>
+
+    <script>
+        // 倒计时脚本：设置展会的目标时间为 2026年6月18日 00:00:00 (展会开幕)
+        // 注意：为了演示效果，如果时间已过则自动显示展会进行中/已开幕状态，并使用绝对目标日期。
+        function getExpoTargetDate() {
+            // 目标：2026年6月18日 上午9点整 (展会开场)
+            return new Date(2026, 5, 18, 9, 0, 0); // 月份从0开始 5=>6月
+        }
+
+        function updateCountdown() {
+            const targetDate = getExpoTargetDate();
+            const now = new Date();
+            const diff = targetDate - now;
+            
+            const daysElem = document.getElementById('days');
+            const hoursElem = document.getElementById('hours');
+            const minutesElem = document.getElementById('minutes');
+            const secondsElem = document.getElementById('seconds');
+            
+            if (diff <= 0) {
+                // 展会已经开幕或者正在进行
+                daysElem.innerText = '00';
+                hoursElem.innerText = '00';
+                minutesElem.innerText = '00';
+                secondsElem.innerText = '00';
+                // 可以显示提示文字
+                const countdownBox = document.getElementById('countdownTimer');
+                if(countdownBox && !countdownBox.querySelector('.expo-live')){
+                    const liveTag = document.createElement('div');
+                    liveTag.className = 'expo-live';
+                    liveTag.style.width = '100%';
+                    liveTag.style.marginTop = '8px';
+                    liveTag.style.fontWeight = 'bold';
+                    liveTag.style.color = '#b47c48';
+                    liveTag.innerText = '🎉 展会进行中，欢迎莅临展位！ 🎉';
+                    countdownBox.parentNode.insertBefore(liveTag, countdownBox.nextSibling);
+                }
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (86400000)) / (3600000));
+            const minutes = Math.floor((diff % 3600000) / 60000);
+            const seconds = Math.floor((diff % 60000) / 1000);
+            
+            daysElem.innerText = days < 10 ? '0' + days : days;
+            hoursElem.innerText = hours < 10 ? '0' + hours : hours;
+            minutesElem.innerText = minutes < 10 ? '0' + minutes : minutes;
+            secondsElem.innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+        
+        // 每秒钟刷新倒计时
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // 处理表单提交 (无需后端，模拟提交并给出友好提示，免费展示且不报错)
+        const form = document.getElementById('expoForm');
+        const feedbackDiv = document.getElementById('formFeedback');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            if(!nameInput.value.trim() || !emailInput.value.trim()) {
+                feedbackDiv.innerHTML = '<span style="color:#c53a1f;">❌ 请填写姓名和邮箱以便我们与您取得联系。</span>';
+                return;
+            }
+            // 模拟提交成功
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = '提交中...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                feedbackDiv.innerHTML = '<span style="color:#2c6e2f;">✅ 预约成功！我们的展会团队将在24小时内发送确认函与展位地图到您的邮箱。期待在展会现场与您会面！</span>';
+                form.reset();
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
+                // 可选滚动到反馈区
+                feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 600);
+        });
+    </script>
+</body>
+</html>
