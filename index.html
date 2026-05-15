@@ -426,34 +426,57 @@
     </header>
 
     <main>
-        <!-- 英雄区域 + 展会倒计时 -->
+                <!-- Hero 轮播区域 -->
         <section id="home" class="hero">
-            <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content">
-                        <div class="hero-badge">🌟 全球国际服装展览会 · 特邀制造商</div>
-                        <h1>卓越工艺 · 智造未来<br>您的国际服装制造伙伴</h1>
-                        <p>15年专业服装生产经验，为全球品牌提供一站式ODM/OEM服务。欢迎莅临我们在国际展会的专属展位，探索2026最新环保面料与智能成衣方案。</p>
-                        <!-- 倒计时组件 (动态计算到展会开幕) -->
-                        <div class="countdown-box" id="countdownTimer">
-                            <div class="countdown-item"><span class="countdown-number" id="days">00</span><div class="countdown-label">天</div></div>
-                            <div class="countdown-item"><span class="countdown-number" id="hours">00</span><div class="countdown-label">小时</div></div>
-                            <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><div class="countdown-label">分钟</div></div>
-                            <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><div class="countdown-label">秒</div></div>
+            <div class="carousel-container">
+                <div class="carousel-slides" id="carouselSlides">
+                    <!-- 幻灯片 1 - 智能制造 -->
+                    <div class="carousel-slide">
+                        <div class="slide-bg" style="background-image: linear-gradient(105deg, #1a2634 0%, #2c3e4e 100%), url('https://placehold.co/1600x650/2c3e50/white?text=Smart+Factory'); background-blend-mode: overlay;">
+                            <div class="slide-content">
+                                <div class="hero-badge">🌟 2026 国际服装展览会 · 特邀制造商</div>
+                                <h1>卓越工艺 · 智造未来<br>您的国际服装制造伙伴</h1>
+                                <p>15年专业服装生产经验，为全球品牌提供一站式ODM/OEM服务。欢迎莅临我们在国际展会的专属展位。</p>
+                                <div class="countdown-box" id="countdownTimer">
+                                    <div class="countdown-item"><span class="countdown-number" id="days">00</span><div class="countdown-label">天</div></div>
+                                    <div class="countdown-item"><span class="countdown-number" id="hours">00</span><div class="countdown-label">小时</div></div>
+                                    <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><div class="countdown-label">分钟</div></div>
+                                    <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><div class="countdown-label">秒</div></div>
+                                </div>
+                                <p style="margin-top: 24px;"><strong>展会日期：2026年6月18日 - 20日</strong> &nbsp;| 地点：上海国家会展中心 4.1号馆 C22展位</p>
+                            </div>
                         </div>
-                        <p style="margin-top: 24px;"><strong>展会日期：2026年6月18日 - 20日</strong> &nbsp;| 地点：上海国家会展中心 4.1号馆 C22展位</p>
                     </div>
-                    <div class="hero-visual">
-                        <!-- 极简时尚插画展示服装行业质感 -->
-                        <svg class="fashion-svg" viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M70,70 L120,40 L170,70 L170,140 L120,170 L70,140 L70,70Z" stroke="#b47c48" stroke-width="2.5" fill="#f5ede3" />
-                            <path d="M100 90 L140 90 L140 110 L100 110 Z" fill="#b47c48" fill-opacity="0.5" />
-                            <circle cx="120" cy="125" r="12" stroke="#1f2a3e" stroke-width="2" fill="white" />
-                            <path d="M85 90 L70 70 L170 70 L155 90" stroke="#1f2a3e" stroke-width="2" stroke-dasharray="4 2" />
-                            <text x="100" y="170" font-size="10" fill="#806a53">Fashion Tech</text>
-                        </svg>
+                    <!-- 幻灯片 2 - 环保可持续 -->
+                    <div class="carousel-slide">
+                        <div class="slide-bg" style="background-image: linear-gradient(105deg, #1e3a2f 0%, #2d5a45 100%), url('https://placehold.co/1600x650/2d5a45/white?text=Eco+Friendly'); background-blend-mode: overlay;">
+                            <div class="slide-content">
+                                <div class="hero-badge">🌿 可持续制造先锋</div>
+                                <h1>环保面料 · 绿色供应链<br>助力品牌ESG愿景</h1>
+                                <p>GRS认证再生纤维、有机棉、生物基面料，从源头减少碳足迹，引领服装行业绿色革命。</p>
+                                <a href="#products" style="display: inline-block; background: var(--primary-accent); color: white; padding: 12px 28px; border-radius: 40px; text-decoration: none; font-weight: 600; margin-top: 12px;">探索环保系列 →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 幻灯片 3 - 快速响应/柔性制造 -->
+                    <div class="carousel-slide">
+                        <div class="slide-bg" style="background-image: linear-gradient(105deg, #3e2a1f 0%, #5e3e2a 100%), url('https://placehold.co/1600x650/5e3e2a/white?text=Fast+Delivery'); background-blend-mode: overlay;">
+                            <div class="slide-content">
+                                <div class="hero-badge">⚡ 柔性快反供应链</div>
+                                <h1>小单快反 · 全球交付<br>7天打样，15天批量生产</h1>
+                                <p>数字化智能工厂+精益生产管理，缩短30%交付周期，从设计到上架极速响应市场需求。</p>
+                                <a href="#contact" style="display: inline-block; background: var(--primary-accent); color: white; padding: 12px 28px; border-radius: 40px; text-decoration: none; font-weight: 600; margin-top: 12px;">预约洽谈 →</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
+                <!-- 左右切换按钮 -->
+                <button class="carousel-btn btn-prev" id="prevBtn">❮</button>
+                <button class="carousel-btn btn-next" id="nextBtn">❯</button>
+                
+                <!-- 指示点 -->
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </section>
 
