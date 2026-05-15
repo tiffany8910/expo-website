@@ -776,6 +776,91 @@
                 feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }, 600);
         });
+                // ========= 轮播图逻辑 =========
+        const slides = document.getElementById('carouselSlides');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('carouselDots');
+        let currentIndex = 0;
+        const totalSlides = document.querySelectorAll('.carousel-slide').length;
+        let autoPlayInterval;
+        const autoPlayDelay = 5000; // 5秒自动切换
+
+        // 创建指示点
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // 切换到指定幻灯片
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            currentIndex = index;
+            const offset = -currentIndex * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+            
+            // 更新指示点样式
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                if (i === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // 下一张
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        // 上一张
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+
+        // 启动自动播放
+        function startAutoPlay() {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => {
+                nextSlide();
+            }, autoPlayDelay);
+        }
+
+        // 停止自动播放（鼠标悬停时）
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+        }
+
+        // 绑定事件
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            stopAutoPlay();
+            startAutoPlay();
+        });
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            stopAutoPlay();
+            startAutoPlay();
+        });
+        
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+        carouselContainer.addEventListener('mouseleave', startAutoPlay);
+
+        // 初始化
+        createDots();
+        startAutoPlay();
     </script>
 </body>
 </html>
